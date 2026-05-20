@@ -1,0 +1,183 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 50px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+
+/* BRAND */
+.brand{
+  flex:1;
+}
+
+.brand h2 {
+  color: var(--color-text);
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.brand p {
+  color:var(--color-text-muted), #94a3b8;
+}
+
+/* ========================= */
+/* LINKS */
+/* ========================= */
+/*
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links h3 {
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #94a3b8;
+  transition: 0.3s ease;
+}
+
+.links a:hover {
+  color: #3b82f6;
+}
+
+/* ========================= */
+/* INFO */
+/* ========================= */
+/*
+.info h3 {
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.info p {
+  margin-bottom: 6px;
+  color: #94a3b8;
+}
+
+.info span {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+
+/*----------------------------*/
+/* COPY */
+
+.copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.copy p {
+  color:var(--color-grisTenue);
+}
+
+.copy span {
+  font-size: 0.9rem;
+  color: var(--color-grisTenue);
+  font-style: italic;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .copy {
+    align-items: center;
+  }
+}
+
+/* CSS DEL LOGO DE TIENDA NOVA */
+
+.logoContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+.logo{
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: -60px;
+}
+
+/* MANEJANDO LAS IMAGENES DE LOS DESARROLLADORES */
+
+.team {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.team img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #60a5fa;
+  transition: transform 0.3s ease;
+}
+
+.team img:hover {
+  transform: scale(1.08);
+}
+
+
+
+/****************************/
+/* CARDS DEVELOPERS */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 12px;
+  background-color: #111c34;
+  border: 1px var(--color-border);
+  border-radius: 14px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h4 {
+  font-size: 0.9rem;
+  color: #f8fafc;
+  margin-top: 6px;
+}
+
+.card span {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
