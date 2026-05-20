@@ -1,84 +1,20 @@
 import styles from "./Cart.module.css";
 
-function Cart() {
-
+// src/componentes/Cart/Cart.jsx
+import React from "react";
+const Cart = () => {
+  // Por ahora, este componente solo mostrará un mensaje.
+  // Más adelante, consumirá los datos de nuestro contexto.
   return (
-
-    <section className={styles.cart}>
-
-      <h2 className={styles.titulo}>
-        🛒 Tu carrito
-      </h2>
-
-      {/* LISTA DE PRODUCTOS */}
-
-      <div className={styles.listaProductos}>
-
-        {/* PRODUCTO 1 */}
-
-        <div className={styles.producto}>
-
-          <img
-            src="/images/imgProductos/1-notebook.jpg"
-            alt="Notebook Gamer"
-            className={styles.imagen}
-          />
-
-          <div className={styles.info}>
-
-            <h3>Notebook Gamer</h3>
-
-            <p>Precio: $2500</p>
-
-          </div>
-
-          <button className={styles.eliminar}>
-            ✖
-          </button>
-
-        </div>
-
-        {/* PRODUCTO 2 */}
-
-        <div className={styles.producto}>
-
-          <img
-            src="/images/imgProductos/2-mouse-rgb.webp"
-            alt="Mouse RGB"
-            className={styles.imagen}
-          />
-
-          <div className={styles.info}>
-
-            <h3>Mouse RGB</h3>
-
-            <p>Precio: $120</p>
-
-          </div>
-
-          <button className={styles.eliminar}>
-            ✖
-          </button>
-
-        </div>
-
-      </div>
-
-      {/* RESUMEN */}
-
-      <div className={styles.resumen}>
-
-        <h3>Total: $2620</h3>
-
-        <button className={styles.finalizar}>
-          Finalizar compra
-        </button>
-
-      </div>
-
-    </section>
-
+    <div className={styles.cartContainer}>
+          <h1 className={styles.titulo}>Carrito de Compras</h1>
+          <div>
+            <img src="/images/imgProductos/1-notebook.jpg"
+            alt="notebook" />
+            <h3 className={styles.texto}>Notebook</h3>
+            <p className={styles.texto}>Precio $1000000</p>
+          </div>          
+    </div>
   );
-}
-
+};
 export default Cart;
