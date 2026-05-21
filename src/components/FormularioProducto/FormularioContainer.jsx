@@ -68,6 +68,7 @@ function FormularioContainer() {
         // Por el momento hacemos un console.log
         console.log(
           "Enviando los siguientes datos COMPLETOS a la API:", productoCompleto );
+          alert("Producto agregado con éxito");
 
       } else {
 

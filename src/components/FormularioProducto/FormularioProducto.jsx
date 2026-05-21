@@ -1,7 +1,6 @@
 // En src/componentens/FormularioProducto/FormularioProducto
-
-
 import React from 'react';
+import styles from './FormularioProducto.module.css';
 
 // Por ahora, es un componente súper simple. Solo muestra el HTML.
 
@@ -13,68 +12,72 @@ function FormularioProducto({
 }) {
   console.log(datosForm);
   
-  
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '24rem',
-    margin: '3rem auto',
-    padding: '1.5rem',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    gap: '16px',
-  };
   return (
-    <form style={formStyle} onSubmit={manejarEnvio}>
+    <form className={styles.formulario} onSubmit={manejarEnvio}>
       <h3>Agregar NUEVO Producto</h3>
 
-      <div>
-        <label>Nombre del Producto:</label>
+      <div className={styles.grupoInput}>
+        <label htmlFor="nombre">Nombre del Producto:</label>
 
         <input
+              className={styles.input}
+              id="nombre"
               type="text"
               placeholder="Ej: Teclado Mecánico"
               name="nombre"
               value={datosForm.nombre}
               onChange={manejarCambio}
+              required
               />
       </div>
 
-      <div>
-        <label>Precio:</label>
-        <input 
-              type="number" 
+      <div className={styles.grupoInput}>
+        <label htmlFor="precio">Precio:</label>
+        <input
+              className={styles.input}
+              id="precio"
+              type="number"
               placeholder="Ej: 95"
-              name="precio"  //Atributo clave para identiciar el input
+              name="precio"
               value={datosForm.precio}
               onChange={manejarCambio}
+              required
+              min="1"
         />
                     
       </div>
 
-      <div>
-        <label>Stock:</label>
+      <div className={styles.grupoInput}>
+        <label htmlFor="stock">Stock:</label>
         <input
+            className={styles.input}
+            id="stock"
             type="number"
             placeholder="Ej: 5"
             name="stock"
             value={datosForm.stock}
             onChange={manejarCambio}
+            required
+            min="0"
         />
       </div>
 
-      <div>
-        <label>Imagen:</label>
+      <div className={styles.grupoInput}>
+        <label htmlFor="imagen">Imagen:</label>
         <input 
+                className={styles.input}
+
+                id="imagen"
                 type="file"
                 placeholder="https://..."
-                //name="imagen"
                 onChange={manejarCambioImagen}
         />
       </div>
 
-      <button type="submit">Guardar el Producto</button>
+      <button className={styles.boton} type="submit">
+              Guardar el Producto
+      </button>
     </form>
   );
 }
-export default FormularioProducto;
+export default FormularioProducto;    

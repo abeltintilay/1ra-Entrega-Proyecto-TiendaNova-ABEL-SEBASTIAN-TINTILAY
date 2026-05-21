@@ -1,0 +1,38 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  max-width: 24rem;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.grupoInput {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.boton {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+    background-color: #0f172a;
+    color: white;
+
+    transition: background-color 0.3s ease ;
+}
+
+.boton:hover {
+    background-color: #60a5fa;
+}
