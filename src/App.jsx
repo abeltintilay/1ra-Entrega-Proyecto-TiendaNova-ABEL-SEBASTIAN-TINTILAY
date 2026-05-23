@@ -7,6 +7,9 @@ import FormularioContainer from "./components/FormularioProducto/FormularioConta
 
 import Cart from "./components/Cart/Cart";
 
+/*   directorio  */
+import Directorio from "./components/Footer/Directorio";
+
 function App() {
   return (
     <Routes>
@@ -54,6 +57,7 @@ function App() {
               <p>
                 Este es el equipo que trabaja para ofrecer el mejor servicio.
               </p>
+              <Directorio />
             </>
           }
         />

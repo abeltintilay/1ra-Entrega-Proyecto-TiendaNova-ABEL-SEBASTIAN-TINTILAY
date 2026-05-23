@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "abel tintilay",
+    "email": "abeltintilay26@gmail.com",
+    "puesto": "Desarrollador Frontend",
+    "foto": "/images/imgNosotros/abel.png"
+  },
+  {
+    "id": 2,
+    "nombre": "María Gómez",
+    "email": "maria.gomez@gmail.com",
+    "puesto": "Diseñadora UX/UI",
+    "foto": "/images/imgNosotros/maria.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Rodríguez",
+    "email": "carlos.rodriguez@gmail.com",
+    "puesto": "Backend Developer",
+    "foto": "/images/imgNosotros/carlos.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Lucía Fernández",
+    "email": "lucia.fernandez@gmail.com",
+    "puesto": "Project Manager",
+    "foto": "/images/imgNosotros/lucia.jpg"
+  }
+]

@@ -21,7 +21,7 @@ body,
 /*  BODY */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f8fafc;
+  background-color:  #f1f5f9;  /* #f8fafc;  */
   color: #0f172a;
   line-height: 1.5;
   overflow-x: hidden;
@@ -49,10 +49,25 @@ button{
   font-family: inherit;
 }
 
+/* Espaciado global  */
+/* SPACING GLOBAL */
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
+/* transiciones suaves globales */
+.card {
+  transition: all 0.3s ease;
+}
 
+.card img {
+  object-fit: contain;
+}
 
-
+.card {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 
 
 

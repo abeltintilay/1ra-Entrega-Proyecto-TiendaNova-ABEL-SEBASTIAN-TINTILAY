@@ -9,9 +9,16 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-                <h1>TiendaNova</h1>
-                <p>Proyecto Final 1ra Entrega</p>
-                <span>por Abel Tintilay</span>
+            <Link to="/">
+                  <h1>TiendaNova</h1>
+    
+                  <div className={styles.signature}>
+                      <p>Proyecto Final 1ra Entrega</p>
+                      <span>por Abel Tintilay</span>
+                  </div>
+            </Link>
+
+             
       </div>
 
       <div className={styles.navContainer}>

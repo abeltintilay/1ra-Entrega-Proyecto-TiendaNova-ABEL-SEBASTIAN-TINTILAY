@@ -9,6 +9,7 @@ function Navbar() {
   return (
 
          <nav className={styles.menu}>
+              <ul>
                     <li><Link to="/">Inicio</Link></li>
 
                     <li><Link to="/productos">Productos</Link></li>
@@ -18,8 +19,7 @@ function Navbar() {
                     <li><Link to="/contactos">Contacto</Link></li>
                     
                     <li><Link to="/carrito">Carrito</Link></li>
-
-
+              </ul>
       </nav>
 
     );

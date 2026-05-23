@@ -26,12 +26,15 @@ export function Item({ nombre, precio, stock, imagen }) {
         Comprar
       </button>
 
-      <span
-            onClick={marcarComoFavorito} 
-            className={styles.favorito}>
-              
-            {esFavorito ? "⭐" : "☆"}
-      </span>
+      <div className={styles.favoritoContainer}>
+            <span
+                  onClick={marcarComoFavorito} 
+                  className={styles.favorito}    
+            >
+                    
+                  {esFavorito ? "⭐" : "☆"}
+            </span>
+      </div>  
     </div>
   );
 }
