@@ -96,10 +96,20 @@
 
 /* NAVBAR CENTER */
 .navContainer {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*
+.navContainer {
   flex: 1;
   display: flex;
   justify-content: center;
 }
+*/
 
 /* CART */
 .cartContainer {

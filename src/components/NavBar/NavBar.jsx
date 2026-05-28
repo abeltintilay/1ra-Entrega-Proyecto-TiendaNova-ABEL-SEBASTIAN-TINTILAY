@@ -1,4 +1,3 @@
-{/*    import { Link } from "react-router-dom";    */}
 import { useState } from "react";
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
@@ -6,10 +5,24 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
 
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
   return (
 
-         <nav className={styles.menu}>
-              <ul>
+         <nav className={styles.navbar}>
+          {/* INSERTAMOS EL BOTON HAMBURGUESA */}
+              <button 
+                className={styles.hamburguesa}
+                onClick={() => setMenuAbierto(!menuAbierto)}
+              >
+                ☰
+              </button>
+
+              <ul 
+                className={menuAbierto?
+                 `${styles.menu} ${styles.activo}`
+                 : styles.menu}
+                 >
                     <li><Link to="/">Inicio</Link></li>
 
                     <li><Link to="/productos">Productos</Link></li>
@@ -27,9 +40,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-
-
-
-

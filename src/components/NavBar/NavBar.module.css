@@ -1,10 +1,15 @@
-/* MENU */
-.menu {
+/* NAVBAR */
+
+.navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.menu ul {
+/* MENU DESKTOP */
+
+.menu {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -19,6 +24,7 @@
 }
 
 /* LINKS */
+
 .menu a {
   position: relative;
   font-weight: 500;
@@ -28,7 +34,8 @@
   white-space: nowrap;
 }
 
-/* ELIMINA SUBRAYADO FIJO */
+/* ELIMINA SUBRAYADO */
+
 .menu a:visited,
 .menu a:focus,
 .menu a:active {
@@ -37,6 +44,7 @@
 }
 
 /* LINEA ANIMADA */
+
 .menu a::after {
   content: "";
   position: absolute;
@@ -57,11 +65,97 @@
   width: 100%;
 }
 
+/* HAMBURGUESA */
+.hamburguesa {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .menu ul {
-    flex-wrap: wrap;
-    justify-content: center;
+  .navbar {
+    justify-content: flex-end;
+  }
+  /* BOTON */
+  .hamburguesa {
+    display: block;
+    z-index: 1000;
+  }
+
+  /* MENU */
+  .menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
+    padding: 20px;
+    border-radius: 14px;
+
+    background: rgba(2, 11, 30, 0.4);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+
+
+    /* ANIMACION */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
+      visibility 0.4s ease;
+  }
+
+  /* MENU ACTIVO */
+
+  .activo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* EFECTO CASCADA */
+  .menu li {
+    opacity: 0;
+    transform: translateY(-15px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  .activo li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .activo li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .activo li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .activo li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .activo li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .activo li:nth-child(5) {
+    transition-delay: 0.5s;
   }
 }
