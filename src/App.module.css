@@ -1,0 +1,13 @@
+.introSection {
+  padding: 16px;
+}
+
+.introSection h2 {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .introSection {
+    padding-inline: 24px;
+  }
+}

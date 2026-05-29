@@ -1,0 +1,13 @@
+.contenedor {
+  padding: 16px;
+}
+
+.titulo {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .contenedor {
+    padding-inline: 24px;
+  }
+}

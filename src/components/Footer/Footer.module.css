@@ -138,6 +138,26 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
+    padding: 40px 20px;
+  }
+
+  .brand {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .team {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .card {
+    width: min(140px, calc(50% - 12px));
+  }
+
+  .logo {
+    width: min(260px, 100%);
   }
 
   .copy {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
+import styles from "./ItemListContainer.module.css";
 
 function ItemListContainer({ mensaje }) {
   const [productos, setProductos] = useState([]);
@@ -40,8 +41,8 @@ function ItemListContainer({ mensaje }) {
   }
 
   return (
-    <section>
-      <h2>{mensaje}</h2>
+    <section className={styles.contenedor}>
+      <h2 className={styles.titulo}>{mensaje}</h2>
 
       <ItemList productos={productos} />
     </section>

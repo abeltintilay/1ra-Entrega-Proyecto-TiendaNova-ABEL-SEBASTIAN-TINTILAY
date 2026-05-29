@@ -2,6 +2,7 @@ import ItemListContainer from "./components/Items/ItemListContainer/ItemListCont
 import Layout from "./components/Layout/Layout";
 
 import { Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
 
 import FormularioContainer from "./components/FormularioProducto/FormularioContainer";
 
@@ -35,7 +36,9 @@ function App() {
           path="productos"
           element={
             <>
-                  <h1>Hola</h1>
+                  <section className={styles.introSection}>
+                    <h1>Hola</h1>
+                  </section>
                   <ItemListContainer
                     mensaje={"¡Descubre nuestros nuevos productos!"}
                   />
@@ -53,10 +56,12 @@ function App() {
           path="contactos"
           element={
             <>
-              <h2>Nuestra empresa cuenta con personal altamente capacitado</h2>
-              <p>
-                Este es el equipo que trabaja para ofrecer el mejor servicio.
-              </p>
+              <section className={styles.introSection}>
+                <h2>Nuestra empresa cuenta con personal altamente capacitado</h2>
+                <p>
+                  Este es el equipo que trabaja para ofrecer el mejor servicio.
+                </p>
+              </section>
               <Directorio />
             </>
           }
@@ -68,8 +73,10 @@ function App() {
           path="/carrito"
           element={
             <>
-              <h2>Estado actual del carrito: </h2>
-              <p>Productos</p>
+              <section className={styles.introSection}>
+                <h2>Estado actual del carrito: </h2>
+                <p>Productos</p>
+              </section>
               <Cart />
             </>
           }

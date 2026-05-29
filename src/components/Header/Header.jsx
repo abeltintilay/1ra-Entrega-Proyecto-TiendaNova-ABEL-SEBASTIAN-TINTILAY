@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-            <Link to="/">
+            <Link to="/" className={styles.logoLink}>
                   <h1>TiendaNova</h1>
     
                   <div className={styles.signature}>
