@@ -8,6 +8,8 @@ import FormularioContainer from "./components/FormularioProducto/FormularioConta
 
 import Cart from "./components/Cart/Cart";
 
+import ProductoDestacado from "./components/ProductoDestacado/ProductoDestacado";
+
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
 
@@ -16,71 +18,68 @@ function App() {
     <Routes>
       {/* RUTA PADRE */}
 
-      <Route path="/" element={<Layout />}>
-        {/* INICIO */}
+              <Route path="/" element={<Layout />}>
+                {/* INICIO */}
 
-        <Route
-              index
-              element={
-                  <ItemListContainer
-                  mensaje={
-                    "Bienvenidos a TiendaNova, tu destino de tecnología de confianza!"
+                <Route
+                      index
+                      element={
+                          <ItemListContainer
+                          mensaje={
+                            "Bienvenidos a TiendaNova, tu destino de tecnología de confianza!"
+                          }
+                        />
+                      }
+                />
+
+                {/* PRODUCTOS */}
+
+                <Route
+                  path="productos"
+                  element={
+                    <>
+                          <ProductoDestacado
+                            mensaje={"¡Descubre nuestros nuevos productos DESTACADOS!"}
+                          />
+                    </>
                   }
                 />
-              }
-        />
 
-        {/* PRODUCTOS */}
+                {/* NUEVOS PRODUCTOS */}
 
-        <Route
-          path="productos"
-          element={
-            <>
-                  <section className={styles.introSection}>
-                    <h1>Hola</h1>
-                  </section>
-                  <ItemListContainer
-                    mensaje={"¡Descubre nuestros nuevos productos!"}
-                  />
-            </>
-          }
-        />
+                <Route path="nuevos-productos" element={<FormularioContainer />} />
 
-        {/* NUEVOS PRODUCTOS */}
+                {/* CONTACTOS */}
 
-        <Route path="nuevos-productos" element={<FormularioContainer />} />
+                <Route
+                  path="contactos"
+                  element={
+                    <>
+                      <section className={styles.introSection}>
+                        <h2>Nuestra empresa cuenta con personal altamente capacitado</h2>
+                        <p>
+                          Este es el equipo que trabaja para ofrecer el mejor servicio.
+                        </p>
+                      </section>
+                      <Directorio />
+                    </>
+                  }
+                />
 
-        {/* CONTACTOS */}
+                {/* CARRITO */}
 
-        <Route
-          path="contactos"
-          element={
-            <>
-              <section className={styles.introSection}>
-                <h2>Nuestra empresa cuenta con personal altamente capacitado</h2>
-                <p>
-                  Este es el equipo que trabaja para ofrecer el mejor servicio.
-                </p>
-              </section>
-              <Directorio />
-            </>
-          }
-        />
-
-        {/* CARRITO */}
-
-        <Route
-          path="/carrito"
-          element={
-            <>
-              <section className={styles.introSection}>
-                <h2>Estado actual del carrito: </h2>
-                <p>Productos</p>
-              </section>
-              <Cart />
-            </>
-          }
-        />
+                <Route
+                  path="/carrito"
+                  element={
+                    <>
+                      <section className={styles.introSection}>
+                        <h2>Estado actual del carrito: </h2>
+                        <p>Productos</p>
+                      </section>
+                      <Cart />
+                    </>
+                  }
+                />
       </Route>
     </Routes>
   );

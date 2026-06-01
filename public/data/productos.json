@@ -4,41 +4,47 @@
     "nombre": "Notebook Gamer",
     "precio": 2500,
     "stock": 8,
-    "imagen": "/images/imgProductos/1-notebook.jpg"
+    "imagen": "/images/imgProductos/1-notebook.jpg",
+    "destacado": true
   },
   {
     "id": 2,
     "nombre": "Mouse RGB",
     "precio": 120,
     "stock": 15,
-    "imagen": "/images/imgProductos/2-mouse-rgb.webp"
+    "imagen": "/images/imgProductos/2-mouse-rgb.webp",
+    "destacado": true
   },
   {
     "id": 3,
     "nombre": "Auriculares Pro",
     "precio": 300,
     "stock": 10,
-    "imagen": "/images/imgProductos/3-auriculares-pro.jpg"
+    "imagen": "/images/imgProductos/3-auriculares-pro.jpg",
+    "destacado": false
   },
   {
     "id": 4,
     "nombre": "Teclado Mecánico",
     "precio": 450,
     "stock": 12,
-    "imagen": "/images/imgProductos/4-teclado-mecanico.jpg"
+    "imagen": "/images/imgProductos/4-teclado-mecanico.jpg",
+    "destacado": false
   },
   {
     "id": 5,
     "nombre": "Monitor UltraWide",
     "precio": 1800,
     "stock": 5,
-    "imagen": "/images/imgProductos/5-MonitorUltraWide.jpg"
+    "imagen": "/images/imgProductos/5-MonitorUltraWide.jpg",
+    "destacado": false
   },
   {
     "id": 6,
     "nombre": "Silla Gamer",
     "precio": 950,
     "stock": 7,
-    "imagen": "/images/imgProductos/6-SillaGamer.jpg"
+    "imagen": "/images/imgProductos/6-SillaGamer.jpg",
+    "destacado": false
   }
 ]

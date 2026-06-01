@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import styles from "./ItemListContainer.module.css";
 
-function ItemListContainer({ mensaje }) {
+function ItemListContainer({ mensaje, destacado }) {
+  
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -40,11 +41,15 @@ function ItemListContainer({ mensaje }) {
     return <p>Error: {error}</p>;
   }
 
+// FILTRANDO LOS PRODUCTOS DESTACADOS
+
+const productosAMostrar = destacado ? productos.filter((prod) => prod.destacado) : productos;
+
   return (
     <section className={styles.contenedor}>
       <h2 className={styles.titulo}>{mensaje}</h2>
 
-      <ItemList productos={productos} />
+      <ItemList productos={productosAMostrar} />
     </section>
   );
 }
