@@ -15,7 +15,7 @@ function Navbar() {
                 className={styles.hamburguesa}
                 onClick={() => setMenuAbierto(!menuAbierto)}
               >
-                ☰
+                 {menuAbierto ? "×" : "☰"}
               </button>
 
               <ul 

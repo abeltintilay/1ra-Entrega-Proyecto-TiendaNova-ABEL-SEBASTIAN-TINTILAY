@@ -10,6 +10,9 @@ import Cart from "./components/Cart/Cart";
 
 import ProductoDestacado from "./components/ProductoDestacado/ProductoDestacado";
 
+
+import ItemDetalle from "./components/Items/ItemsDetalle/ItemDetalle";
+
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
 
@@ -44,6 +47,10 @@ function App() {
                     </>
                   }
                 />
+
+                {/* RUTA DINAMICA PARA EL DETALLE DE CADA PRODUCTO */}
+
+                <Route path="productos/:id" element={<ItemDetalle />} />
 
                 {/* NUEVOS PRODUCTOS */}
 

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styles from "./Item.module.css";
 
-export function Item({ nombre, precio, stock, imagen }) {
+import { Link } from "react-router-dom";
+
+export function Item({id, nombre, precio, stock, imagen }) {
   const [esFavorito, setEsFavorito] = useState(false);
 
   const CompraClick = () => {
@@ -21,6 +23,9 @@ export function Item({ nombre, precio, stock, imagen }) {
       <h3>{nombre}</h3>
       <p>Precio: ${precio}</p>
       <p>Stock disponible: {stock}</p>
+
+      {/* Aqui crearemos rutas dinamicas */}
+      <p> <Link to={`/productos/${id}`}>Ver mas informacion</Link></p>  
 
       <button onClick={CompraClick} className={styles.boton}>
         Comprar

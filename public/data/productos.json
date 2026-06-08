@@ -5,7 +5,8 @@
     "precio": 2500,
     "stock": 8,
     "imagen": "/images/imgProductos/1-notebook.jpg",
-    "destacado": true
+    "destacado": true,
+    "detalle": "Notebook Gamer con procesador Intel Core i7, 16GB de RAM, tarjeta gráfica NVIDIA RTX 3060 y almacenamiento SSD de 512GB. Ideal para juegos exigentes y tareas de alto rendimiento."
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "precio": 120,
     "stock": 15,
     "imagen": "/images/imgProductos/2-mouse-rgb.webp",
-    "destacado": true
+    "destacado": true,
+    "detalle": "Mouse RGB con iluminación personalizable y sensor óptico de alta precisión. Ideal para jugadores exigentes."
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "precio": 300,
     "stock": 10,
     "imagen": "/images/imgProductos/3-auriculares-pro.jpg",
-    "destacado": false
+    "destacado": false,
+    "detalle": "Auriculares Pro con calidad de sonido premium y cancelación de ruido. Ideal para escuchar música y jugar."
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "precio": 450,
     "stock": 12,
     "imagen": "/images/imgProductos/4-teclado-mecanico.jpg",
-    "destacado": false
+    "destacado": false,
+    "detalle": "Teclado mecánico con switches de alta calidad y retroiluminación RGB. Ideal para programadores y jugadores."
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "precio": 1800,
     "stock": 5,
     "imagen": "/images/imgProductos/5-MonitorUltraWide.jpg",
-    "destacado": false
+    "destacado": false,
+    "detalle": "Monitor UltraWide con resolución 3440x1440 y tecnología Quantum Dot. Ideal para productividad y entretenimiento."
   },
   {
     "id": 6,
@@ -45,6 +50,7 @@
     "precio": 950,
     "stock": 7,
     "imagen": "/images/imgProductos/6-SillaGamer.jpg",
-    "destacado": false
+    "destacado": false,
+    "detalle": "Silla Gamer con diseño ergonómico y material de alta calidad. Ideal para largas sesiones de juego."
   }
 ]
