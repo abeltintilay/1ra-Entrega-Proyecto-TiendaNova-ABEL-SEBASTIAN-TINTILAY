@@ -6,16 +6,33 @@ import styles from "./ItemDetalle.module.css";
 /*************/
 import { useNavigate } from "react-router-dom";
 
+/*  CONTADOR */
+import Contador from "../Contador/Contador";
 
+/*******************************/
+import { useCart } from "../../../context/CartContext";
+/**************************/
 
 const ItemDetalle = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
 
+  /******************************** */
+  const { addToCart } = useCart();
+  /******************************** */
+
   const [producto, setProducto] = useState(null); // ver si el producto existe o no, si no existe, mostrar mensaje de error
   const [error, setError] = useState(null); // para manejar errores de carga
   const [cargando, setCargando] = useState(true); // para manejar el estado de carga
+
+  /********************************* */
+  const handleAdd = (cantidad) => {
+    addToCart(producto, cantidad);
+
+    alert(`Agregaste ${cantidad} unidades de ${producto.nombre} al carrito.`);
+  };
+
 
 
 
@@ -67,16 +84,18 @@ const ItemDetalle = () => {
 
         <h3 className={styles.precio}>Precio: ${producto.precio}</h3>
 
-        <h3 className={styles.stock}>Stock disponible: {producto.stock}</h3>
-
         <h3 className={styles.detalle}>{producto.detalle}</h3>
 
-        <button className={styles.boton}>🛒 Agregar al carrito</button>
+        <div className={styles.compra}>
+          <h3 className={styles.stock}>Stock disponible: {producto.stock}</h3>
+          <Contador stock={producto.stock} onAdd={handleAdd} />
+        </div>
+        
+        
 
         <button className={styles.botonVolver} onClick={() => navigate(-1)}>
           ⬅ Volver
         </button>
-        
       </div>
     </section>
   );

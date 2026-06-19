@@ -7,6 +7,8 @@ function Navbar() {
 
   const [menuAbierto, setMenuAbierto] = useState(false);
 
+  const cerrarMenu = () => {setMenuAbierto(false);};
+
   return (
 
          <nav className={styles.navbar}>
@@ -23,15 +25,15 @@ function Navbar() {
                  `${styles.menu} ${styles.activo}`
                  : styles.menu}
                  >
-                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/" onClick={cerrarMenu}>Inicio</Link></li>
 
-                    <li><Link to="/productos">Productos Destacados</Link></li>
+                    <li><Link to="/productos" onClick={cerrarMenu}>Productos Destacados</Link></li>
 
-                    <li><Link to="/nuevos-productos">Nuevos Productos</Link></li>
+                    <li><Link to="/nuevos-productos" onClick={cerrarMenu}>Nuevos Productos</Link></li>
 
-                    <li><Link to="/contactos">Contacto</Link></li>
+                    <li><Link to="/contactos" onClick={cerrarMenu}>Contacto</Link></li>
                     
-                    <li><Link to="/carrito">Carrito</Link></li>
+                    <li><Link to="/carrito" onClick={cerrarMenu}>Carrito</Link></li>
               </ul>
       </nav>
 
