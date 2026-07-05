@@ -8,13 +8,28 @@ function FormularioProducto({
   datosForm,
   manejarCambio,
   manejarEnvio,
-  manejarCambioImagen
+  manejarCambioImagen,
+  inputImagenRef
 }) {
   console.log(datosForm);
   
   return (
     <form className={styles.formulario} onSubmit={manejarEnvio}>
       <h3>Agregar NUEVO Producto</h3>
+
+      <div className={styles.grupoInput}>
+        <label htmlFor="id">ID del Producto:</label>
+        <input
+              className={styles.input}
+              id="id"
+              type="number"
+              name="id"
+              value={datosForm.id}
+              onChange={manejarCambio}
+              readOnly
+        />
+
+      </div>
 
       <div className={styles.grupoInput}>
         <label htmlFor="nombre">Nombre del Producto:</label>
@@ -43,6 +58,7 @@ function FormularioProducto({
               onChange={manejarCambio}
               required
               min="1"
+              step="0.01"
         />
                     
       </div>
@@ -62,17 +78,72 @@ function FormularioProducto({
         />
       </div>
 
+
+      <div className={styles.grupoInput}>
+        <label htmlFor="categoria">Categoría:</label>
+        <select
+          className={styles.input}
+          id="categoria"
+          type="text"
+          placeholder="Ej: Periféricos"
+          name="categoria"
+          value={datosForm.categoria}
+          onChange={manejarCambio}
+          required
+        >
+            <option value="">Seleccione una categoría</option>
+
+                    <option value="Notebooks">Notebooks</option>
+
+                    <option value="Monitores">Pantalla</option>
+
+                    <option value="Periféricos">Periféricos</option>
+
+                    <option value="Sonido">Sonido</option>
+        </select>
+      
+      </div>
+
+    <div className={styles.grupoInput}>
+        <label htmlFor="detalle">Detalle:</label>
+        <textarea
+          className={styles.input}
+          id="detalle"
+          name="detalle"
+          placeholder="Descripción del producto..."
+          value={datosForm.detalle}
+          onChange={manejarCambio}
+          rows="5"
+          required
+        />
+      </div>
+
+
       <div className={styles.grupoInput}>
         <label htmlFor="imagen">Imagen:</label>
         <input 
+                ref={inputImagenRef}
                 className={styles.input}
-
                 id="imagen"
                 type="file"
-                placeholder="https://..."
+                accept="image/*"
                 onChange={manejarCambioImagen}
+                required
         />
       </div>
+
+      <div className={styles.grupoInput}>
+        <label>
+              <input
+                type="checkbox"
+                name="destacado"
+                checked={datosForm.destacado}
+                onChange={manejarCambio}
+              />
+            Producto Destacado
+        </label>
+      </div>
+
 
       <button className={styles.boton} type="submit">
               Guardar el Producto

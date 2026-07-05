@@ -29,6 +29,8 @@ function Navbar() {
 
                     <li><Link to="/productos" onClick={cerrarMenu}>Productos Destacados</Link></li>
 
+                   
+
                     <li><Link to="/nuevos-productos" onClick={cerrarMenu}>Nuevos Productos</Link></li>
 
                     <li><Link to="/contactos" onClick={cerrarMenu}>Contacto</Link></li>

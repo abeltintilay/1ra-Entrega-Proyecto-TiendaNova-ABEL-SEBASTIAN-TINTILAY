@@ -13,6 +13,13 @@ import Contador from "../Contador/Contador";
 import { useCart } from "../../../context/CartContext";
 /**************************/
 
+// Importaciones clave para obtener un solo documento
+import { doc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
+
+
+
 const ItemDetalle = () => {
   const { id } = useParams();
 
@@ -33,10 +40,8 @@ const ItemDetalle = () => {
     alert(`Agregaste ${cantidad} unidades de ${producto.nombre} al carrito.`);
   };
 
-
-
-
   useEffect(() => {
+    /*
     fetch(`/data/productos.json`)
       .then((response) => {
         if (!response.ok) {
@@ -61,7 +66,37 @@ const ItemDetalle = () => {
         setError(error.message);
         setCargando(false);
       });
-  }, [id]);
+
+  */
+
+    if (!id) return;
+
+        const queryId = query(
+            collection(db, "productos"),
+            where("id", "==", Number(id))
+        );
+
+        getDocs(queryId)
+            .then((resp) => {
+                if (resp.empty) {
+                    setError("No se encontró el producto");
+                    return;
+                }
+
+                setProducto({
+                      id: resp.docs[0].id,
+                      ...resp.docs[0].data()
+          });
+            })
+            .catch((error) => {
+                console.error("Error al cargar el producto:", error);
+                setError("Error al cargar el producto");
+            })
+            .finally(() => {
+                setCargando(false);
+            });
+            
+    }, [id]);
 
   if (cargando) {
     return <h2>Cargando producto...</h2>;
@@ -69,6 +104,10 @@ const ItemDetalle = () => {
 
   if (error) {
     return <h2>{error}</h2>;
+  }
+
+  if (!producto) {
+    return <h2>Producto no disponible</h2>;
   }
 
   return (
@@ -90,8 +129,6 @@ const ItemDetalle = () => {
           <h3 className={styles.stock}>Stock disponible: {producto.stock}</h3>
           <Contador stock={producto.stock} onAdd={handleAdd} />
         </div>
-        
-        
 
         <button className={styles.botonVolver} onClick={() => navigate(-1)}>
           ⬅ Volver

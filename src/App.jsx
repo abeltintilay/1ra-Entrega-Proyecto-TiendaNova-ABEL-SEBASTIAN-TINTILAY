@@ -16,6 +16,8 @@ import ItemDetalle from "./components/Items/ItemsDetalle/ItemDetalle";
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
 
+import ProductosDB from "./components/ProductosDB/ProductosDB";
+
 function App() {
   return (
     <Routes>
@@ -87,6 +89,7 @@ function App() {
                     </>
                   }
                 />
+                <Route path="/productosDB" element={<ProductosDB />} />
       </Route>
     </Routes>
   );

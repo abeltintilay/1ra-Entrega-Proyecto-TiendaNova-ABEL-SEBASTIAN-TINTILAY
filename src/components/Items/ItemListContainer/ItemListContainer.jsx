@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import styles from "./ItemListContainer.module.css";
 
+/*  conección con firebase  */
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
+
 function ItemListContainer({ mensaje, destacado }) {
   
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
+
+  /*
   useEffect(() => {
     fetch("/data/productos.json")
       .then((res) => {
@@ -28,6 +35,27 @@ function ItemListContainer({ mensaje, destacado }) {
       });
       
   }, []);
+
+*/
+
+/* conectando con la base de datos de firebase */
+/********************************/
+useEffect(() => {
+    const prodDB = collection(db, "productos");
+    getDocs(prodDB)
+        .then((resp) => {
+        setProductos(
+          resp.docs.map((doc) => {
+            return { ...doc.data() };
+          }),
+      );
+      
+      setCargando(false);
+
+    });
+  }, []);
+/******************************/
+
 
   // CARGANDO
 

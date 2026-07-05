@@ -3,9 +3,9 @@ import styles from "./Cart.module.css";
 // src/componentes/Cart/Cart.jsx
 import React from "react";
 
+import { Link } from "react-router-dom";
 
 import { useCart } from "../../context/CartContext";
-
 
 const Cart = () => {
   // Por ahora, este componente solo mostrará un mensaje.
@@ -13,42 +13,69 @@ const Cart = () => {
 
   const { cart, clearCart, getCartTotal } = useCart();
 
-  // Si el carrito está vacío, mostramos un mensaje
-  if (cart.length === 0) {
-    return (
-      <div>
-        <h1>El carrito está vacío</h1>
-        <p>Agrega productos para continuar la compra.</p>
-      </div>
-    );
-  }
-
-  return (
+  
+ return (
     <div className={styles.cartContainer}>
-      <h1 className={styles.titulo}>Carrito de Compras</h1>
-      {cart.map((item) => (
-        <div key={item.id} className={styles.producto}>
-                 <img 
-                    src={item.imagen}
-                    alt={item.nombre}
-                    className={styles.imagenProducto}
-                  /> 
+      
+      {/* si el carrito esta vacio */}
+      {cart.length === 0 ? (
+        <div>
+          <h2>El carrito está vacío</h2>
+          <p className={styles.texto}>
+            Agrega productos para continuar la compra.
+          </p>
+
+          <Link to="/" className={styles.linkVolver}>
+            Volver al inicio
+          </Link>
+        </div>
+      ) : (
+        <>
+          {cart.map((item) => (
+            <div key={item.id} className={styles.producto}>
+              <img
+                src={item.imagen}
+                alt={item.nombre}
+                className={styles.imagenProducto}
+              />
 
               <div className={styles.detalleProducto}>
-                    <h4 className={styles.nombreProducto}>{item.nombre}</h4>
-                    <p className={styles.detalle}>Cantidad: {item.quantity}</p>
-                    <p className={styles.detalle}>Precio unitario: ${item.precio}</p>
-                    <p className={styles.detalle}>Subtotal: ${item.precio * item.quantity}</p>
+                <h4 className={styles.nombreProducto}>{item.nombre}</h4>
+                <p className={styles.detalle}>Cantidad: {item.quantity}</p>
+                <p className={styles.detalle}>Precio unitario: ${item.precio}</p>
+                <p className={styles.detalle}>
+                  Subtotal: ${item.precio * item.quantity}
+                </p>
               </div>
-        </div>
-      ))}
-      <h3 className={styles.total}>Total a pagar: ${getCartTotal()}</h3>
+            </div>
+          ))}
 
-      <button
-            className={styles.botonVaciar}
-            onClick={clearCart}>Vaciar Carrito
-      </button>
+          <h3 className={styles.total}>
+            Total a pagar: ${getCartTotal()}
+          </h3>
+
+          <button className={styles.botonVaciar} onClick={clearCart}>
+            Vaciar Carrito
+          </button>
+
+
+          <Link to="/"
+              className={styles.linkVolver}
+              onClick={()=>{
+              alert("Gracias por comprar");
+              clearCart()}}
+          > 
+              Finalizar Compra 
+          </Link>
+
+
+          <Link to="/" className={styles.linkVolver}>
+            Seguir comprando
+          </Link>
+        </>
+      )}
     </div>
   );
 };
+
 export default Cart;

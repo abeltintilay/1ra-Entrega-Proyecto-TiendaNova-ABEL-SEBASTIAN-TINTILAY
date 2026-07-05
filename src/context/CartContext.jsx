@@ -43,6 +43,7 @@ export const CartProvider = ({ children }) => {
       // total de productos en el carrito, sumando las cantidades de cada item. El acc es el acumulador que va sumando las cantidades, y el item es cada producto en el carrito. El 0 es el valor inicial del acumulador, es decir, si el carrito esta vacio, la cantidad total sera 0.
       const getCartQuantity = () => {
             return cart.reduce((acc, item) => acc + item.quantity, 0);};
+
 // Funcion de reduccion, es para saber la cantidad total de productos en el carrito, sumando las cantidades de cada item. El acc es el acumulador que va sumando las cantidades, y el item es cada producto en el carrito.
 // acc es el acumulador que va sumando las cantidades, y el item es cada producto en el carrito. El 0 es el valor inicial del acumulador, es decir, si el carrito esta vacio, la cantidad total sera 0.
       
@@ -51,10 +52,25 @@ export const CartProvider = ({ children }) => {
             return cart.reduce((acc, item) => acc + item.precio * item.quantity,0);
             };
 
+//**********  Cantidad actual total de un producto  */
+
+const getCantidadActual = (productId) => {
+      const item = cart.find(item => item.id === productId);
+      return item ? item.quantity : 0;}
+
 
 
       return (
-              <CartContext.Provider value={{ cart, addToCart, clearCart,getCartQuantity, getCartTotal }}>
+              <CartContext.Provider
+                        value={{ 
+                              cart,
+                              addToCart,
+                              clearCart,
+                              getCartQuantity,
+                              getCartTotal,
+                              getCantidadActual
+                        }}>
+
                       {children}
               </CartContext.Provider>
               );

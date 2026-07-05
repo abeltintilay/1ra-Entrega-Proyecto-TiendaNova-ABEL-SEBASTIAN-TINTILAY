@@ -1,25 +1,78 @@
 // En src/contenedores/FormularioContainer/FormularioContainer.jsx
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
+
+// IMPORTACIONES CLAVE DE FIREBASE
+import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from 'firebase/firestore';
 
 function FormularioContainer() {
   const [datosForm, setDatosForm] = useState({
+    id: "",
     nombre: "",
     precio: "",
     stock: "",
+    categoria: "",
+    detalle: "",
+    destacado: false,
     //  Imagen: null,  Eliminamos el campo de imagen del estado inicial, ya que no es necesario para el formulario.
   });
+    //  Imagen: null,  Eliminamos el campo de imagen del estado inicial, ya que no es necesario para el formulario.
 
   // 1-Creamos un nuevo estado para el archivo de imagen, separado del estado del formulario.
   const [imagenFile, setImagenFile] = useState(null);
+  const inputImagenRef = useRef(null); // Referencia para el input de tipo "file"
+
+
+
+  /***   TRABAJANDO EL ID AUTOMATICO **********/
+  const obtenerSiguienteId = async () => {
+    try {
+      const db = getFirestore();
+      const productosCollection = collection(db, "productos");
+
+      const consulta = query(
+        productosCollection,
+        orderBy("id", "desc"),
+        limit(1)
+      );
+
+      const respuesta = await getDocs(consulta);
+
+      if (respuesta.empty) {
+        setDatosForm((prev) => ({
+          ...prev,
+          id: 1,
+        }));
+      } else {
+        const ultimoProducto = respuesta.docs[0].data();
+
+        const siguienteId = ultimoProducto.id + 1;
+
+        setDatosForm((prev) => ({
+          ...prev,
+          id: siguienteId,
+        }));
+      }
+    } catch (error) {
+      console.error("Error obteniendo el siguiente ID:", error);
+    }
+  };
+
+  useEffect(() => {
+      obtenerSiguienteId();
+  }, []);
+/************************************************************************/
+
+
+
 
   const manejarCambio = (evento) => {
-    const { name, value } = evento.target;
+    const { name, value, type, checked } = evento.target;
     // const files = evento.target.files;
 
     setDatosForm({
       ...datosForm,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
 
       //[name]: type === "file" ? files[0] : value,
     });
@@ -61,14 +114,50 @@ function FormularioContainer() {
        
        
         const productoCompleto = {
-          ...datosForm,
+          id: Number(datosForm.id),
+          nombre: datosForm.nombre,
+          precio: Number(datosForm.precio.replace(",", ".")), // Convertimos a número
+          stock: Number(datosForm.stock),   // Convertimos a número
           // Agregamos la URL obtenida
-          urlImagen: datosImgbb.data.url,
+          imagen: datosImgbb.data.url,
+          destacado: datosForm.destacado,
+          detalle: datosForm.detalle,
+          categoria: datosForm.categoria,
         };
+
+
         // Por el momento hacemos un console.log
-        console.log(
-          "Enviando los siguientes datos COMPLETOS a la API:", productoCompleto );
-          alert("Producto agregado con éxito");
+        console.log('Enviando producto a Firebase:', productoCompleto);
+          // CODIGO PARA GUARDAR EN FIREBASE 
+
+              // Obtenemos la instancia de la base de datos
+              const db = getFirestore();
+              // Apuntamos a la colección "productos" (si no existe, se crea)
+              const productosCollection = collection(db, "productos");
+              
+              
+              // Agregamos el nuevo documento a la colección
+              await addDoc(productosCollection, productoCompleto);
+
+              alert("Producto agregado con éxito a la base de datos de FIREBASE!");
+
+
+              setDatosForm({
+                id: "",
+                nombre: "",
+                precio: "",   
+                stock: "",   
+                categoria: "",
+                detalle: "",
+                destacado: false,
+              });
+
+              setImagenFile(null); // Limpiamos el estado de la imagen
+                  if (inputImagenRef.current) {
+                    inputImagenRef.current.value = ""; // Limpiamos el input de tipo "file"
+                  }
+              
+              await obtenerSiguienteId();
 
       } else {
 
@@ -87,6 +176,7 @@ function FormularioContainer() {
       manejarEnvio={manejarEnvio}
       // Pasamos la nueva función como prop
       manejarCambioImagen={manejarCambioImagen}
+      inputImagenRef={inputImagenRef}
     />
   );
 }
