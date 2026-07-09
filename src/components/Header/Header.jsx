@@ -13,7 +13,7 @@ function Header() {
                   <h1>TiendaNova</h1>
     
                   <div className={styles.signature}>
-                      <p>Proyecto Final 1ra Entrega</p>
+                      <p>Proyecto Final 2da Entrega</p>
                       <span>por Abel Tintilay</span>
                   </div>
             </Link>

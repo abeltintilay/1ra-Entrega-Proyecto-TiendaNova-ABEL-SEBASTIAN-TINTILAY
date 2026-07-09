@@ -4,7 +4,7 @@ import Layout from "./components/Layout/Layout";
 import { Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 
-import FormularioContainer from "./components/FormularioProducto/FormularioContainer";
+//import FormularioContainer from "./components/FormularioProducto/FormularioContainer";
 
 import Cart from "./components/Cart/Cart";
 
@@ -12,6 +12,9 @@ import ProductoDestacado from "./components/ProductoDestacado/ProductoDestacado"
 
 
 import ItemDetalle from "./components/Items/ItemsDetalle/ItemDetalle";
+
+// IMPOR GESTION DE PRODUCTOS
+import Gestion from "./components/GestionProductos/GestionProductos";
 
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
@@ -56,7 +59,11 @@ function App() {
 
                 {/* NUEVOS PRODUCTOS */}
 
-                <Route path="nuevos-productos" element={<FormularioContainer />} />
+             {/*   <Route path="nuevos-productos" element={<FormularioContainer />} />        */}
+
+                {/* GESTION DE PRODUCTOS */}
+
+                <Route path="gestion" element={<Gestion />} />
 
                 {/* CONTACTOS */}
 

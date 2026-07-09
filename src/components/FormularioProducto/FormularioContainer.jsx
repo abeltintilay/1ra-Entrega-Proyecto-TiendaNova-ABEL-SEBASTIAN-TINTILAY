@@ -1,3 +1,4 @@
+/*
 // En src/contenedores/FormularioContainer/FormularioContainer.jsx
 import { useState, useEffect, useRef } from "react";
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
@@ -24,7 +25,7 @@ function FormularioContainer() {
 
 
 
-  /***   TRABAJANDO EL ID AUTOMATICO **********/
+  /***   TRABAJANDO EL ID AUTOMATICO **********
   const obtenerSiguienteId = async () => {
     try {
       const db = getFirestore();
@@ -61,7 +62,7 @@ function FormularioContainer() {
   useEffect(() => {
       obtenerSiguienteId();
   }, []);
-/************************************************************************/
+/**************************************************
 
 
 
@@ -82,6 +83,10 @@ function FormularioContainer() {
   const manejarCambioImagen = (evento) => {
     setImagenFile(evento.target.files[0]);
   };
+
+
+/************************************hasta aqui******
+
 
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
@@ -181,3 +186,6 @@ function FormularioContainer() {
   );
 }
 export default FormularioContainer;
+
+
+*/

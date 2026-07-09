@@ -9,13 +9,20 @@ function FormularioProducto({
   manejarCambio,
   manejarEnvio,
   manejarCambioImagen,
-  inputImagenRef
+  inputImagenRef,
+  modoEdicion,
+  guardando,
+  cancelarEdicion
 }) {
   console.log(datosForm);
   
   return (
     <form className={styles.formulario} onSubmit={manejarEnvio}>
-      <h3>Agregar NUEVO Producto</h3>
+      <h3>
+          {modoEdicion
+                        ? "Editar Producto"
+                        : "Agregar Nuevo Producto"}
+      </h3>
 
       <div className={styles.grupoInput}>
         <label htmlFor="id">ID del Producto:</label>
@@ -121,6 +128,16 @@ function FormularioProducto({
 
       <div className={styles.grupoInput}>
         <label htmlFor="imagen">Imagen:</label>
+        {/* Mostramos la imagen actual si estamos en modo edición y hay una imagen existente */}
+              {modoEdicion && datosForm.imagen && (
+                <img
+                     src={datosForm.imagen}
+                     alt={datosForm.nombre}
+                     className={styles.imagenProducto} />
+              )}
+
+        {/*-----------------------------------------------------------*/}
+
         <input 
                 ref={inputImagenRef}
                 className={styles.input}
@@ -128,7 +145,7 @@ function FormularioProducto({
                 type="file"
                 accept="image/*"
                 onChange={manejarCambioImagen}
-                required
+                required={!modoEdicion} // Solo requerido si no estamos editando
         />
       </div>
 
@@ -145,9 +162,29 @@ function FormularioProducto({
       </div>
 
 
-      <button className={styles.boton} type="submit">
-              Guardar el Producto
+      <button
+              className={styles.boton}
+              type="submit"
+              disabled={guardando}
+              >{
+                guardando
+                      ? "Procesando..."
+                      : modoEdicion
+                          ? "Actualizar Producto"
+                          : "Guardar Producto"
+              }
       </button>
+      
+      {modoEdicion && (
+                <button
+                      type="button"
+                      className={styles.botonCancelar}
+                      onClick={cancelarEdicion}
+                >
+                    Cancelar edición
+                </button>
+)}
+
     </form>
   );
 }
