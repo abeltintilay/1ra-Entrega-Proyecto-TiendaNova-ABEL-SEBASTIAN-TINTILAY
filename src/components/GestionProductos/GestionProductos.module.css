@@ -1,6 +1,4 @@
-/* =========================================================
-   CONTENEDOR PRINCIPAL
-========================================================= */
+/* =============   CONTENEDOR PRINCIPAL   ==================== */
 
 .gestionContainer {
   max-width: 1400px;
@@ -35,20 +33,14 @@
   margin: 35px 0;
 }
 
-/* =========================================================
-   LISTA DE PRODUCTOS
-========================================================= */
-
+/* ======   LISTA DE PRODUCTOS    **************/
 .productosGrid {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* =========================================================
-   CARD DEL PRODUCTO
-========================================================= */
-
+/* ================   CARD DEL PRODUCTO    ======================== */
 .productoCard {
   display: flex;
   align-items: center;
@@ -72,101 +64,58 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
 }
 
-/* =========================================================
-   IMAGEN
-========================================================= */
-
+/* ==============   IMAGEN    =================== */
 .productoImagen {
-
   width: 110px;
-
   height: 110px;
-
   object-fit: contain;
-
   border-radius: 10px;
-
   border: 1px solid #ddd;
-
   background: white;
-
   padding: 8px;
-
   flex-shrink: 0;
 }
 
-/* =========================================================
-   INFORMACIÓN
-========================================================= */
-
+/* ================    INFORMACIÓN    =================== */
 .productoInfo {
-
   flex: 1;
-
   margin-left: 25px;
-
   margin-right: 25px;
 }
 
 .productoNombre {
-
   font-size: 1.35rem;
-
   font-weight: 700;
-
   color: var(--color-bg);
-
   margin-bottom: 18px;
 }
 
-/* =========================================================
-   DATOS
-========================================================= */
-
+/* ==============   DATOS    ==================== */
 .productoDatos {
-
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 14px 30px;
 }
 
 .dato {
-
   display: flex;
-
   flex-direction: column;
 }
 
 .etiqueta {
-
   font-size: .82rem;
-
   color: #6b7280;
-
   margin-bottom: 3px;
-
   font-weight: 500;
 }
 
 .valor {
-
   font-size: .98rem;
-
   font-weight: 600;
-
   color: var(--color-bg);
 }
 
-/* =========================================================
-   BOTONES
-========================================================= */
-
-/* =========================================================
-   BOTONES
-========================================================= */
-
+/* =========    BOTONES      ========== */
 .botonesAccion {
   display: flex;
   flex-direction: column;
@@ -176,7 +125,6 @@
 }
 
 /* Botón Editar */
-
 .botonEditar {
   padding: 10px 12px;
   border: none;
@@ -234,95 +182,62 @@
   cursor: not-allowed;
   transform: none;
 }
-/* =========================================================
-   ESTADO VACÍO
-========================================================= */
-
+/* ==========    ESTADO VACÍO    =========== */
 .estadoVacio {
-
   text-align: center;
-
   padding: 60px;
-
   color: #6b7280;
-
   font-size: 1.1rem;
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
-
+/* =============    TABLET    ========== */
 @media (max-width: 900px) {
-
   .productoCard {
-
     flex-direction: column;
-
     align-items: flex-start;
   }
 
   .productoInfo {
-
     width: 100%;
-
     margin: 20px 0;
   }
 
   .productoDatos {
-
     grid-template-columns: repeat(2, 1fr);
   }
 
   .botonesAccion {
-
     width: 100%;
-
     flex-direction: row;
-
     justify-content: flex-end;
   }
-
 }
 
-/* =========================================================
-   CELULAR
-========================================================= */
-
+/* =========    CELULAR    ============== */
 @media (max-width: 600px) {
-
   .gestionContainer {
-
     padding: 20px 10px;
   }
 
   .tituloPrincipal {
-
     font-size: 1.8rem;
   }
 
   .tituloLista {
-
     font-size: 1.5rem;
   }
 
   .productoImagen {
-
     width: 90px;
-
     height: 90px;
   }
 
   .productoDatos {
-
     grid-template-columns: 1fr;
   }
 
   .botonesAccion {
-
     width: 100%;
-
     flex-direction: column;
   }
-
 }
