@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 //import FormularioContainer from '../FormularioProducto/FormularioContainer';
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
+import styles from "./GestionProductos.module.css";
 
 // IMPORTACIONES CLAVE DE FIREBASE
 import { getFirestore, query, orderBy, limit, updateDoc } from "firebase/firestore";
@@ -34,6 +35,9 @@ const GestionProductos = () => {
   // 1-Creamos un nuevo estado para el archivo de imagen, separado del estado del formulario.
   const [imagenFile, setImagenFile] = useState(null);
   const inputImagenRef = useRef(null); // Referencia para el input de tipo "file"
+// para hacer el scroll
+  const formularioRef = useRef(null);
+
 
   /***   TRABAJANDO EL ID AUTOMATICO **********/
   const obtenerSiguienteId = async () => {
@@ -106,6 +110,27 @@ const GestionProductos = () => {
     cargarProductos();
   }, []);
 
+//------------------------------------------------
+/******************** EDITAR ******************************/
+  const [productoAEditar, setProductoAEditar] = useState(null);
+  /*********************************/
+  //para PONER EN FANTASMA EL BOTON DE GUARDAR EDITAR
+  const[guardando, setGuardando] = useState(false);
+  //-----------------------------------------------
+
+
+  /********************************/
+  // para el Scroll al formulario
+  useEffect(() => {
+    if (productoAEditar && formularioRef.current) {
+      formularioRef.current.scrollIntoView({ 
+        behavior: "smooth",
+        block: "start",
+    });
+  }
+  }, [productoAEditar]);
+  /********************************/
+
   /**************** el DELETE  ****************/
   const handleDelete = async (id) => {
     const confirmacion = window.confirm(
@@ -115,18 +140,12 @@ const GestionProductos = () => {
       const docRef = doc(db, "productos", id);
       await deleteDoc(docRef);
       // Actualizamos el estado local para reflejar el cambio en la UI             inmediatamente.
-      setProductos(productos.filter((prod) => prod.id !== id));
+      setProductos(productos.filter((prod) => prod.idFirestore !== id));
       alert("Producto eliminado.");
     }
   };
 
-  /******************** EDITAR ******************************/
-  const [productoAEditar, setProductoAEditar] = useState(null);
-  /*********************************/
-  //para PONER EN FANTASMA EL BOTON DE GUARDAR EDITAR
-  const[guardando, setGuardando] = useState(false);
-  //-----------------------------------------------
-
+  
   const manejarEditar = (producto) => {
     setProductoAEditar(producto);
     setDatosForm(producto); // Cargamos los datos del producto en el formulario
@@ -259,11 +278,12 @@ const cancelarEdicion = async () => {
 };
 /*******************************************************/
 
+return (
+  <div className={styles.gestionContainer}>
+    <h2 className={styles.tituloPrincipal}>Gestión de Productos</h2>
+    <hr className={styles.separador} />
 
-  return (
-    <div>
-      <h2>Gestión de Productos</h2>
-      <hr />
+    <div ref={formularioRef}>
       <FormularioProducto
         datosForm={datosForm}
         manejarCambio={manejarCambio}
@@ -274,21 +294,95 @@ const cancelarEdicion = async () => {
         inputImagenRef={inputImagenRef}
         cancelarEdicion={cancelarEdicion}
       />
-      <hr />
-      <h3>Lista de Productos</h3>
-      <ul>
-        {productos.map((prod) => (
-          <li key={prod.id}>
-            {prod.nombre} - ${prod.precio}
-            {/*acá agregaremos los botones de acción */}
-            
-            <button onClick={() => manejarEditar(prod)}>Editar</button>
-
-            <button onClick={() => handleDelete(prod.idFirestore)} style={{ marginLeft: "10px" }}>Eliminar</button>
-          </li>
-        ))}
-      </ul>
     </div>
-  );
-};
+
+    <hr className={styles.separador} />
+
+    <h3 className={styles.tituloLista}>Lista de Productos</h3>
+
+    {productos.length === 0 ? (
+      <div className={styles.estadoVacio}>
+        No hay productos en la base de datos
+      </div>
+    ) : (
+      <div className={styles.productosGrid}>
+        {productos.map((prod) => (
+          <div key={prod.idFirestore} className={styles.productoCard}>
+            
+            {/* Imagen */}
+            <img
+              src={prod.imagen}
+              alt={prod.nombre}
+              className={styles.productoImagen}
+            />
+
+            {/* Información */}
+            <div className={styles.productoInfo}>
+              <h4 className={styles.productoNombre}>
+                {prod.nombre}
+              </h4>
+
+              <div className={styles.productoDatos}>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>ID:</span>
+                  <span className={styles.valor}>{prod.id}</span>
+                </div>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>Categoría:</span>
+                  <span className={styles.valor}>{prod.categoria}</span>
+                </div>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>Precio:</span>
+                  <span className={styles.valor}>${prod.precio}</span>
+                </div>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>Stock:</span>
+                  <span className={styles.valor}>{prod.stock}</span>
+                </div>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>Destacado:</span>
+                  <span className={styles.valor}>
+                    {prod.destacado ? "⭐ Sí" : "No"}
+                  </span>
+                </div>
+
+                <div className={styles.dato}>
+                  <span className={styles.etiqueta}>Estado:</span>
+                  <span className={styles.valor}>
+                    {prod.stock > 0 ? "Disponible" : "Sin stock"}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Botones */}
+            <div className={styles.botonesAccion}>
+              <button
+                className={styles.botonEditar}
+                onClick={() => manejarEditar(prod)}
+              >
+                Editar
+              </button>
+
+              <button
+                className={styles.botonEliminar}
+                onClick={() => handleDelete(prod.idFirestore)}
+              >
+                Eliminar
+              </button>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+);
+}
 export default GestionProductos;

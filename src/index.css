@@ -60,12 +60,9 @@ button{
 /* transiciones suaves globales */
 .card {
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .card img {
   object-fit: contain;
-}
-
-.card {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }

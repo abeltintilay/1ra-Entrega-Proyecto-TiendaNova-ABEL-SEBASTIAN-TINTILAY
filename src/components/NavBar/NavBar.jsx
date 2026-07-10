@@ -31,6 +31,8 @@ function Navbar() {
 
                    <li><Link to="/gestion" onClick={cerrarMenu}>Gestion Productos</Link></li>
 
+                   <li><Link to="/gestionCupones" onClick={cerrarMenu}>Gestion Cupones</Link></li>
+
                   {/*  <li><Link to="/nuevos-productos" onClick={cerrarMenu}>Nuevos Productos</Link></li>   */}
 
                     <li><Link to="/contactos" onClick={cerrarMenu}>Contacto</Link></li>

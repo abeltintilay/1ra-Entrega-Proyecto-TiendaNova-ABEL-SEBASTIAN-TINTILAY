@@ -1,0 +1,328 @@
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+
+.gestionContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.tituloPrincipal {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-bg);
+}
+
+.tituloLista {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 40px 0 25px;
+  color: var(--color-bg);
+}
+
+.separador {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
+  margin: 35px 0;
+}
+
+/* =========================================================
+   LISTA DE PRODUCTOS
+========================================================= */
+
+.productosGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* =========================================================
+   CARD DEL PRODUCTO
+========================================================= */
+
+.productoCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  padding: 18px 22px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+
+  transition: .25s;
+}
+
+.productoCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
+}
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.productoImagen {
+
+  width: 110px;
+
+  height: 110px;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+
+  border: 1px solid #ddd;
+
+  background: white;
+
+  padding: 8px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.productoInfo {
+
+  flex: 1;
+
+  margin-left: 25px;
+
+  margin-right: 25px;
+}
+
+.productoNombre {
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  color: var(--color-bg);
+
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   DATOS
+========================================================= */
+
+.productoDatos {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px 30px;
+}
+
+.dato {
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.etiqueta {
+
+  font-size: .82rem;
+
+  color: #6b7280;
+
+  margin-bottom: 3px;
+
+  font-weight: 500;
+}
+
+.valor {
+
+  font-size: .98rem;
+
+  font-weight: 600;
+
+  color: var(--color-bg);
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.botonesAccion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 140px;
+  flex-shrink: 0;
+}
+
+/* Botón Editar */
+
+.botonEditar {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.08s ease;
+  font-weight: 600;
+  color: white;
+  background-color: #0f172a;
+}
+
+.botonEditar:hover:not(:disabled) {
+  background-color: #60a5fa;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.botonEditar:focus {
+  outline: 3px solid rgba(96,165,250,0.22);
+  outline-offset: 2px;
+}
+
+.botonEditar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Botón Eliminar */
+
+.botonEliminar {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.08s ease;
+  font-weight: 600;
+  color: white;
+  background-color: #dc2626;
+}
+
+.botonEliminar:hover:not(:disabled) {
+  background-color: #ef4444;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.botonEliminar:focus {
+  outline: 3px solid rgba(239,68,68,0.22);
+  outline-offset: 2px;
+}
+
+.botonEliminar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+/* =========================================================
+   ESTADO VACÍO
+========================================================= */
+
+.estadoVacio {
+
+  text-align: center;
+
+  padding: 60px;
+
+  color: #6b7280;
+
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .productoCard {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .productoInfo {
+
+    width: 100%;
+
+    margin: 20px 0;
+  }
+
+  .productoDatos {
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .botonesAccion {
+
+    width: 100%;
+
+    flex-direction: row;
+
+    justify-content: flex-end;
+  }
+
+}
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .gestionContainer {
+
+    padding: 20px 10px;
+  }
+
+  .tituloPrincipal {
+
+    font-size: 1.8rem;
+  }
+
+  .tituloLista {
+
+    font-size: 1.5rem;
+  }
+
+  .productoImagen {
+
+    width: 90px;
+
+    height: 90px;
+  }
+
+  .productoDatos {
+
+    grid-template-columns: 1fr;
+  }
+
+  .botonesAccion {
+
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+}

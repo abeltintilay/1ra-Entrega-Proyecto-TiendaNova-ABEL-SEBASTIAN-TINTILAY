@@ -1,0 +1,170 @@
+/* =============================================== */
+
+.tituloPrincipal {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-bg);
+}
+
+.gestionContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.tituloPrincipal {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-bg);
+}
+
+.tituloLista {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 40px 0 25px;
+  color: var(--color-bg);
+}
+
+/* =====   FORMULARIO    ================ */
+.formularioCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+  margin-top: 30px;
+}
+
+.formulario {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.campo {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.campo label {
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--color-bg);
+}
+
+.campo input {
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:1rem;
+}
+
+.campo input:focus {
+  outline:none;
+  border-color:#60a5fa;
+}
+
+/* =======   BOTON CREAR   ================== */
+.botonCrear {
+  width:140px;
+  padding:10px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.18s;
+  font-weight:600;
+  color:white;
+  background-color:#0f172a;
+}
+
+.botonCrear:hover {
+  background-color:#60a5fa;
+  transform:translateY(-1px);
+}
+
+/* =========   LISTADO CUPONES   =============== */
+.lista {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.cuponCard {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:18px 22px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  transition:.25s;
+}
+
+.cuponCard:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.cuponCard p {
+  margin:6px 0;
+  color:var(--color-bg);
+}
+
+/* ========   BOTON ELIMINAR   ============== */
+.botonEliminar {
+  padding:10px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:background-color .18s ease, transform .08s ease;
+  font-weight:600;
+  color:white;
+  background-color:#dc2626;
+}
+
+.botonEliminar:hover {
+  background-color:#ef4444;
+  transform:translateY(-1px);
+}
+
+/* =========   TABLET     ============ */
+@media(max-width:900px){
+  .cuponCard {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .botonEliminar {
+    width:100%;
+  }
+
+  .botonCrear {
+    width:100%;
+  }
+
+}
+
+/* ============   CELULAR     ================= */
+@media(max-width:600px){
+  .gestionContainer {
+    padding:20px 10px;
+  }
+
+  .tituloPrincipal {
+    font-size:1.8rem;
+  }
+
+  .tituloLista {
+    font-size:1.5rem;
+  }
+
+  .formularioCard {
+    padding:18px;
+  }
+}

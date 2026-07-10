@@ -85,3 +85,30 @@
 
   margin-top: 10px;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contenedor {
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .imagen {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .titulo {
+    font-size: 1.8rem;
+  }
+
+  .precio {
+    font-size: 1.6rem;
+  }
+
+  .info {
+    gap: 12px;
+  }
+}

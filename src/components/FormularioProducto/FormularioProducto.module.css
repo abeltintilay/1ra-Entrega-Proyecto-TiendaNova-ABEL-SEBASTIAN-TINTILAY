@@ -1,38 +1,160 @@
+/* Formulario en una sola columna (siempre) */
 .formulario {
-  display: flex;
-  flex-direction: column;
-  max-width: 24rem;
+  display: grid;
+  grid-template-columns: 1fr; /* UNA sola columna */
+  gap: 12px;
+  max-width: 32rem;
   margin: 3rem auto;
   padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  gap: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background: #ffffff;
 }
 
+/* Título ocupa la fila completa (ya que todo es 1 columna, es redundante pero seguro) */
+.formulario h3 {
+  grid-column: 1 / -1;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.35rem;
+}
+
+/* Grupo de inputs (vertical) */
 .grupoInput {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+/* Inputs / selects / textarea */
 .input {
-  padding: 8px;
+  padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #fff;
+  color: #0f172a;
 }
 
+/* Miniatura de imagen en modo edición */
+.imagenProducto {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 6px 0;
+  border: 1px solid #e6e6e6;
+  background: #f8fafc;
+}
+
+/* Botón principal */
 .boton {
-  padding: 10px;
+  padding: 10px 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-
-    background-color: #0f172a;
-    color: white;
-
-    transition: background-color 0.3s ease ;
+  transition: background-color 0.18s ease, transform 0.08s ease;
+  font-weight: 600;
+  color: white;
+  background-color: #0f172a; /* conservamos color primary del proyecto */
+  display: inline-block;
 }
 
-.boton:hover {
-    background-color: #60a5fa;
+/* Variante secundaria (Cancelar) */
+/* Botón cancelar: gris oscuro -> gris más claro en hover (y cambio de color de texto) */
+.botonCancelar {
+  background: #374151; /* gris oscuro (estado por defecto) */
+  color: #ffffff;      /* texto blanco por defecto */
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.18s ease, transform 0.08s ease, color 0.12s ease;
+}
+
+.botonCancelar:hover:not(:disabled) {
+  background-color: #6b7280; /* gris un poco más claro en hover */
+  color: #0f172a;            /* texto oscuro (primary) para buen contraste */
+  transform: translateY(-1px);
+}
+
+/* focus accesible */
+.botonCancelar:focus {
+  outline: 3px solid rgba(96,165,250,0.22);
+  outline-offset: 2px;
+}
+
+/* estado disabled */
+.botonCancelar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Hover y focus (accesibilidad) */
+.boton:hover:not(:disabled) {
+  background-color: #60a5fa; /* azul claro del proyecto */
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.boton:focus,
+.botonCancelar:focus {
+  outline: 3px solid rgba(96,165,250,0.22);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.boton:disabled,
+.boton[disabled],
+.botonCancelar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Contenedor de botones: en una columna se apilan; si quieres en línea, aplicar display:flex en JSX contenedor */
+.botonesContenedor {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Móvil pequeño (< 480px) */
+@media (max-width: 480px) {
+  .formulario {
+    padding: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  .imagenProducto { width: 96px; }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .formulario {
+    max-width: 40rem;
+    padding: 2rem;
+  }
+  .imagenProducto { width: 140px; }
+}
+
+/* Desktop (1024px - 1200px) */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .formulario {
+    max-width: 45rem;
+    padding: 2rem;
+  }
+}
+
+/* Desktop grande (> 1200px) */
+@media (min-width: 1200px) {
+  .formulario {
+    max-width: 50rem;
+    padding: 2.5rem;
+  }
+  .formulario h3 {
+    font-size: 1.5rem;
+  }
 }

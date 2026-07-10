@@ -16,6 +16,9 @@ import ItemDetalle from "./components/Items/ItemsDetalle/ItemDetalle";
 // IMPOR GESTION DE PRODUCTOS
 import Gestion from "./components/GestionProductos/GestionProductos";
 
+// IMPOR GESTION DE CUPONES
+import GestionCupones from "./components/GestionCupones/GestionCupones";
+
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
 
@@ -64,6 +67,10 @@ function App() {
                 {/* GESTION DE PRODUCTOS */}
 
                 <Route path="gestion" element={<Gestion />} />
+
+                {/* GESTION DE CUPONES */}
+
+                <Route path="gestionCupones" element={<GestionCupones />} />
 
                 {/* CONTACTOS */}
 
