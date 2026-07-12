@@ -19,6 +19,9 @@ import Gestion from "./components/GestionProductos/GestionProductos";
 // IMPOR GESTION DE CUPONES
 import GestionCupones from "./components/GestionCupones/GestionCupones";
 
+// IMPORTAR LOGIN
+import Login from "./components/Login/Login";
+
 /*   directorio  */
 import Directorio from "./components/Footer/Directorio";
 
@@ -71,6 +74,10 @@ function App() {
                 {/* GESTION DE CUPONES */}
 
                 <Route path="gestionCupones" element={<GestionCupones />} />
+
+                {/* LOGIN */}
+
+                <Route path="login" element={<Login />} />
 
                 {/* CONTACTOS */}
 

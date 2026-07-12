@@ -1,0 +1,134 @@
+/* ======    CONTENEDOR PRINCIPAL     ============ */
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* ======   TARJETA LOGIN    =================== */
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+/* =======    TITULOS   ================== */
+
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* =======   FORMULARIO     ============= */
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.grupoInput {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grupoInput label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-bg);
+}
+
+/* =======   INPUTS     ============ */
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: var(--color-bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+/* ========   BOTON   ================ */
+
+.boton {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background-color: var(--color-bg);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.08s ease;
+}
+
+.boton:hover:not(:disabled) {
+  background-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.boton:focus {
+  outline: 3px solid rgba(96, 165, 250, 0.22);
+  outline-offset: 2px;
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========   RESPONSIVE   ============ */
+
+@media (max-width: 600px) {
+
+  .loginContainer {
+    padding: 30px 15px;
+    align-items: flex-start;
+  }
+
+  .loginCard {
+    padding: 1.5rem;
+  }
+
+  .titulo {
+    font-size: 1.7rem;
+  }
+
+  .subtitulo {
+    font-size: 0.9rem;
+  }
+
+}
