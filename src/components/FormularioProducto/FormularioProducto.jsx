@@ -33,7 +33,7 @@ function FormularioProducto({
               name="id"
               value={datosForm.id}
               onChange={manejarCambio}
-              readOnly
+              readOnly={!modoEdicion}
         />
 
       </div>

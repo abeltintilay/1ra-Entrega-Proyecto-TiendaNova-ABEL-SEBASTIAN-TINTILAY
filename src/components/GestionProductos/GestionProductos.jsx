@@ -8,6 +8,7 @@ import {
   doc,
   addDoc,
 } from "firebase/firestore";
+
 //import FormularioContainer from '../FormularioProducto/FormularioContainer';
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
 import styles from "./GestionProductos.module.css";
@@ -174,6 +175,31 @@ const GestionProductos = () => {
 
 
     try {
+        // -----------   VALIDAR QUE EL ID SEA MAYOR QUE CERO   -----------
+              const idIngresado = Number(datosForm.id);
+
+              if (idIngresado <= 0) {
+                  alert("El ID debe ser mayor que cero.");
+                  return;
+              }
+        // ---------- Debe ser un número entero  --------------
+              if (!Number.isInteger(idIngresado)) {
+                  alert("El ID debe ser un número entero.");
+                  return;
+              }
+        
+        // -------- VALIDAR QUE EL ID NO ESTÉ REPETIDO  -----------
+              const idDuplicado = productos.some(
+                    (prod) =>
+                        prod.id === idIngresado &&
+                        prod.idFirestore !== productoAEditar?.idFirestore
+                    );
+
+              if (idDuplicado) {
+                  alert("Ya existe un producto con ese ID.");
+                  return;
+            }
+          //---------------------------------------------------------
 
         if (imagenFile){
                 console.log("Subiendo imagen a Imgbb...");
@@ -196,7 +222,8 @@ const GestionProductos = () => {
                 }
         }
 
-      
+
+         
         const productoCompleto = {
           id: Number(datosForm.id),
           nombre: datosForm.nombre,
