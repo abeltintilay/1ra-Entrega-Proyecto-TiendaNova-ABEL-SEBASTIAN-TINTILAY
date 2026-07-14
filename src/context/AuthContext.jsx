@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
             try {
                 await signOut(auth);
-                alert("Sesión cerrada correctamente.");
+               // alert("Sesión cerrada correctamente.");
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
                 alert("No fue posible cerrar la sesión.");
