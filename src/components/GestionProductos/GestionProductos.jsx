@@ -229,7 +229,7 @@ const GestionProductos = () => {
         const productoCompleto = {
           id: Number(datosForm.id),
           nombre: datosForm.nombre,
-          precio: Number(datosForm.precio.replace(",", ".")), // Convertimos a número
+          precio: Number(String(datosForm.precio).replace(",", ".")), // Convertimos a número
           stock: Number(datosForm.stock), // Convertimos a número
           
           // Agregamos la URL obtenida

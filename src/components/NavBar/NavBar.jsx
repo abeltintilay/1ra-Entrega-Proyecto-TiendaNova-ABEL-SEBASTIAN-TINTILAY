@@ -1,13 +1,27 @@
 import { useState } from "react";
 import styles from "./NavBar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext.jsx";
+
 
 function Navbar() {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   const { user, logout } = useAuth();  // Accedemos al usuario y a la función de logout desde el contexto
+
+  //--- Al cerrar sesion, redireccionar a la pagina de inicio
+  const navigate = useNavigate();
+
+  const cerrarSesion = async () => {
+    try {
+      await logout();
+      alert("Sesión cerrada correctamente.");
+      navigate("/");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   const cerrarMenu = () => {
     setMenuAbierto(false);
@@ -78,7 +92,7 @@ function Navbar() {
                     </>
                   )}
                   <span style={{ color: "white" }}>¡Hola, {user.email}!</span>
-                  <button onClick={logout} style={{ color: "white" }}>
+                  <button onClick={cerrarSesion} style={{ color: "white" }}>
                     Cerrar Sesión
                   </button>
           </>
