@@ -9,6 +9,8 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+import { Link } from "react-router-dom";
+
 //import FormularioContainer from '../FormularioProducto/FormularioContainer';
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
 import styles from "./GestionProductos.module.css";
@@ -403,6 +405,15 @@ return (
               >
                 Eliminar
               </button>
+
+              <Link
+                    to={`/productos/${prod.id}`}
+                    className={styles.linkInfo}
+                  >
+                    Ver más información
+              </Link>
+
+
             </div>
 
           </div>
